@@ -5,7 +5,7 @@ A sample project in Unity with a basic implementation of a Capture The Flag game
 
 Additionally, a simple system of the best results, that is, the shortest time needed to pass the board, was implemented.
 
-#Issues/notes:
+## Issues/notes:
 Enemy objects are not "destroyed" when they collide with the player's projectiles - only particle effects are created, and enemies also get a small recoil back as a result of the collision.
 
 Enemy objects could pose more of a threat - it's a matter of adjusting their movement speed.
