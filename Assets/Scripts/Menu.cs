@@ -1,4 +1,3 @@
-using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Assertions;
@@ -37,18 +36,18 @@ public class Menu : MonoBehaviour
 
     public void OnShowHighScoresClick()
     {
-        var _names = NamesColumnTitle;
-        var _times = TimesColumnTitle;
+        var names = NamesColumnTitle;
+        var times = TimesColumnTitle;
 
         var lp = 1;
         foreach (var entry in HighScoresSystem.Instance.Scores)
         {
-            _names += string.Format(NamesColumnFormat, lp, entry.name);
-            _times += string.Format(TimesColumnFormat, entry.time);
+            names += string.Format(NamesColumnFormat, lp, entry.name);
+            times += string.Format(TimesColumnFormat, entry.time);
         }
 
-        txtNames.text = _names;
-        txtTimes.text = _times;
+        txtNames.text = names;
+        txtTimes.text = times;
         
         pnlHighScores.SetActive(true);
     }

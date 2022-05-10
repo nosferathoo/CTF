@@ -3,15 +3,15 @@ using NaughtyAttributes;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class Enemy : MonoBehaviour, IPoolable
+public class Enemy : LeanPooledRigidbody
 {
     [SerializeField] [Tag] private string playerTag, bulletTag; 
     private NavMeshAgent _agent;
-    private Rigidbody _rigidbody;
-    private void Awake()
+
+    protected override void Awake()
     {
+        base.Awake();
         _agent = GetComponent<NavMeshAgent>();
-        _rigidbody = GetComponent<Rigidbody>();
         enabled = false; // disable movement at start
     }
 
@@ -36,15 +36,5 @@ public class Enemy : MonoBehaviour, IPoolable
         {
             enabled = true; // enable movement and player chase when being shot
         }
-    }
-
-    public void OnSpawn()
-    {
-        //
-    }
-
-    public void OnDespawn()
-    {
-        _rigidbody.velocity = _rigidbody.angularVelocity = Vector3.zero;
     }
 }
