@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace Lean.Pool
 {
@@ -8,16 +9,21 @@ namespace Lean.Pool
 	[AddComponentMenu(LeanPool.ComponentPathPrefix + "Pooled Rigidbody")]
 	public class LeanPooledRigidbody : MonoBehaviour, IPoolable
 	{
-		public void OnSpawn()
+		protected Rigidbody _rigidbody;
+
+		protected virtual void Awake()
+		{
+			_rigidbody = GetComponent<Rigidbody>();
+		}
+
+		void IPoolable.OnSpawn()
 		{
 		}
 
-		public void OnDespawn()
+		void IPoolable.OnDespawn()
 		{
-			var rigidbody = GetComponent<Rigidbody>();
-
-			rigidbody.velocity        = Vector3.zero;
-			rigidbody.angularVelocity = Vector3.zero;
+			_rigidbody.velocity        = Vector3.zero;
+			_rigidbody.angularVelocity = Vector3.zero;
 		}
 	}
 }
